@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ur">
 <head>
@@ -27,7 +26,7 @@
   .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 16px; }
   .card { background: white; border-radius: 12px; padding: 16px; box-shadow: 0 3px 12px rgba(176,48,96,0.1); border: 1px solid #f0d0dc; transition: 0.3s; display: flex; flex-direction: column; }
   .card:hover { transform: translateY(-4px); box-shadow: 0 6px 20px rgba(176,48,96,0.2); }
-  .card .img-box { width: 100%; height: 140px; background: linear-gradient(135deg, #ffe0ec, #ffc8dd); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 45px; margin-bottom: 12px; overflow: hidden; }
+  .card .img-box { width: 100%; height: 160px; background: linear-gradient(135deg, #ffe0ec, #ffc8dd); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 50px; margin-bottom: 12px; overflow: hidden; }
   .card .img-box img { width: 100%; height: 100%; object-fit: cover; }
   .card h3 { font-size: 15px; color: #7a1f42; margin-bottom: 6px; }
   .card .meta { font-size: 12px; color: #8a5a70; margin-bottom: 3px; }
@@ -85,17 +84,6 @@
       <li><b>🧺 Household:</b> Surf, dishwash, laundry soaps.</li>
     </ul>
   </div>
-
-  <div class="info-box">
-    <h3>Hum Kyun?</h3>
-    <ul>
-      <li><b>Discreet Packaging:</b> Parcel plain bag mein — koi brand name nahi.</li>
-      <li><b>Female WhatsApp Support:</b> Sirf khawateen staff.</li>
-      <li><b>Size Exchange:</b> 3 din mein exchange (innerwear par return nahi).</li>
-      <li><b>COD + NayaPay:</b> Parcel haath mein aaye, tab paise dein.</li>
-      <li><b>Free Delivery:</b> Rs 5000 se upar ki shopping par delivery bilkul free hai.</li>
-    </ul>
-  </div>
 </div>
 
 <!-- LADIES INNERWEAR (Picture Free) -->
@@ -151,32 +139,6 @@
       <tr><td>34B</td><td>30-32</td><td>34-35</td><td>B</td></tr>
       <tr><td>36B</td><td>32-34</td><td>36-37</td><td>B</td></tr>
       <tr><td>38B</td><td>34-36</td><td>38-39</td><td>B</td></tr>
-      <tr><td>34C</td><td>30-32</td><td>35-36</td><td>C</td></tr>
-      <tr><td>36C</td><td>32-34</td><td>37-38</td><td>C</td></tr>
-      <tr><td>38C</td><td>34-36</td><td>39-40</td><td>C</td></tr>
-    </table>
-  </div>
-
-  <div class="info-box">
-    <h3>Panties Size Chart (Inches)</h3>
-    <table>
-      <tr><th>Size</th><th>Waist</th><th>Hip</th></tr>
-      <tr><td>S</td><td>24-26</td><td>34-36</td></tr>
-      <tr><td>M</td><td>26-28</td><td>36-38</td></tr>
-      <tr><td>L</td><td>28-30</td><td>38-40</td></tr>
-      <tr><td>XL</td><td>30-32</td><td>40-42</td></tr>
-      <tr><td>XXL</td><td>32-34</td><td>42-44</td></tr>
-    </table>
-  </div>
-
-  <div class="info-box">
-    <h3>Nighty Size Chart (Inches)</h3>
-    <table>
-      <tr><th>Size</th><th>Chest</th><th>Length</th><th>Shoulder</th></tr>
-      <tr><td>S</td><td>34-36</td><td>52-54</td><td>14</td></tr>
-      <tr><td>M</td><td>36-38</td><td>54-56</td><td>15</td></tr>
-      <tr><td>L</td><td>38-40</td><td>56-58</td><td>16</td></tr>
-      <tr><td>XL</td><td>40-42</td><td>58-60</td><td>16.5</td></tr>
     </table>
   </div>
 </div>
@@ -192,25 +154,6 @@
       <li>Data kisi third party ko nahi diya jayega.</li>
       <li>WhatsApp chat private — sirf female staff.</li>
       <li>Parcel par brand/product name nahi hoga.</li>
-    </ul>
-  </div>
-
-  <div class="info-box">
-    <h3>📦 Discreet Packaging</h3>
-    <ul>
-      <li>Plain brown/white bag mein parcel.</li>
-      <li>Bahar sirf aapka naam aur address.</li>
-      <li>Courier ko bhi nahi pata hoga andar kya hai.</li>
-    </ul>
-  </div>
-
-  <div class="info-box">
-    <h3>🔄 Return & Exchange</h3>
-    <ul>
-      <li><b>Innerwear:</b> Sirf size exchange 3 din mein (return nahi).</li>
-      <li><b>Daily Bazaar items:</b> Sealed packet ho toh exchange — khula nahi.</li>
-      <li>Exchange delivery charges customer ke zimme.</li>
-      <li>Defective product par hum charges uthayenge.</li>
     </ul>
   </div>
 
@@ -255,60 +198,48 @@
 </div>
 
 <script>
-// ================= LADIES INNERWEAR (No Pictures) =================
+// ================= LADIES INNERWEAR =================
+// Yahan image: "file_name.jpg" likh kar apni picture ka naam daal dein.
 const ladiesProducts = [
-  { cat: "bra", icon: "👙", name: "Cotton Daily Bra", fabric: "100% Cotton, non-padded, wire-free", sizes: "32B, 34B, 36B, 38B", colors: "White, Skin, Black", price: 650 },
-  { cat: "bra", icon: "👙", name: "Padded T-Shirt Bra", fabric: "Lycra + Cotton, lightly padded", sizes: "34B, 36B, 38B", colors: "Skin, Black, Maroon", price: 1200 },
-  { cat: "bra", icon: "👙", name: "Sports Bra", fabric: "Stretchable Lycra, full coverage", sizes: "S, M, L, XL", colors: "Black, Grey, Pink", price: 900 },
-  { cat: "panty", icon: "🩲", name: "Cotton Panty (Pack of 3)", fabric: "100% Cotton, mid-waist", sizes: "S, M, L, XL", colors: "Assorted", price: 800 },
-  { cat: "panty", icon: "🩲", name: "Seamless Panty", fabric: "Nylon + Spandex, no-show", sizes: "M, L, XL", colors: "Skin, Black, White", price: 550 },
-  { cat: "nighty", icon: "👗", name: "Cotton Nighty (Full Sleeve)", fabric: "Printed Cotton, knee length", sizes: "S, M, L, XL", colors: "Floral, Maroon, Navy", price: 1500 },
-  { cat: "nighty", icon: "👗", name: "Satin Nighty", fabric: "Satin, half sleeve, ankle length", sizes: "M, L, XL", colors: "Maroon, Black, Purple", price: 2200 },
-  { cat: "legging", icon: "🧦", name: "Cotton Leggings", fabric: "Cotton Lycra, 4-way stretch", sizes: "S, M, L, XL", colors: "Black, Navy, Maroon", price: 700 }
+  { cat: "bra", icon: "👙", image: "", name: "Cotton Daily Bra", fabric: "100% Cotton, non-padded, wire-free", sizes: "32B, 34B, 36B, 38B", colors: "White, Skin, Black", price: 650 },
+  { cat: "bra", icon: "👙", image: "", name: "Padded T-Shirt Bra", fabric: "Lycra + Cotton, lightly padded", sizes: "34B, 36B, 38B", colors: "Skin, Black, Maroon", price: 1200 },
+  { cat: "panty", icon: "🩲", image: "", name: "Cotton Panty (Pack of 3)", fabric: "100% Cotton, mid-waist", sizes: "S, M, L, XL", colors: "Assorted", price: 800 },
+  { cat: "nighty", icon: "👗", image: "", name: "Cotton Nighty (Full Sleeve)", fabric: "Printed Cotton, knee length", sizes: "S, M, L, XL", colors: "Floral, Maroon, Navy", price: 1500 },
+  { cat: "nighty", icon: "👗", image: "", name: "Satin Nighty", fabric: "Satin, half sleeve, ankle length", sizes: "M, L, XL", colors: "Maroon, Black, Purple", price: 2200 }
 ];
 
 // ================= DAILY BAZAAR =================
 // Yahan image: "file_name.jpg" likh kar apni picture ka naam daal dein.
-// Agar picture nahi hai, toh icon: "emoji" rehne dein.
+// Jab aap picture ka naam likhengi, toh wo website par nazar aayegi.
 const bazaarProducts = [
   // BEAUTY & CARE
-  { cat: "beauty", icon: "🧴", image: "", name: "Beauty Cream", detail: "Whitening cream, 50g", price: 350 },
-  { cat: "beauty", icon: "🧴", image: "", name: "Face Wash", detail: "Assorted brands, 100g", price: 450 },
-  { cat: "beauty", icon: "🪒", image: "", name: "Hair Removal Cream", detail: "Veet / Anne French", price: 350 },
-  { cat: "beauty", icon: "🪒", image: "", name: "Shaving Razor", detail: "Ladies razor (2 pcs pack)", price: 150 },
-  { cat: "beauty", icon: "💄", image: "", name: "Lipstick", detail: "Assorted shades", price: 200 },
-  { cat: "beauty", icon: "🧴", image: "", name: "Shampoo (Small)", detail: "Sunsilk / Head&Shoulders, 180ml", price: 400 },
+  { cat: "beauty", icon: "🧴", image: "beauty_cream.jpg", name: "Beauty Cream", detail: "Whitening cream, 50g", price: 350 },
+  { cat: "beauty", icon: "🧴", image: "face_wash.jpg", name: "Face Wash", detail: "Assorted brands, 100g", price: 450 },
+  { cat: "beauty", icon: "🪒", image: "hair_removal.jpg", name: "Hair Removal Cream", detail: "Veet / Anne French", price: 350 },
+  { cat: "beauty", icon: "🪒", image: "razor.jpg", name: "Shaving Razor", detail: "Ladies razor (2 pcs pack)", price: 150 },
+  { cat: "beauty", icon: "🧴", image: "shampoo.jpg", name: "Shampoo (Small)", detail: "Sunsilk / Head&Shoulders, 180ml", price: 400 },
 
   // BABY & KIDS
-  { cat: "baby", icon: "🍼", image: "", name: "Cerelac (Stage 1/2/3)", detail: "Assorted flavours, 350g", price: 850 },
-  { cat: "baby", icon: "🥛", image: "", name: "Baby Milk Powder", detail: "NAN / S26 / Lactogen", price: 1200 },
-  { cat: "baby", icon: "🧴", image: "", name: "Baby Cream/Lotion", detail: "Johnsons / Himalaya", price: 300 },
-  { cat: "baby", icon: "🧼", image: "", name: "Baby Soap", detail: "Assorted brands", price: 150 },
-  { cat: "baby", icon: "👶", image: "", name: "Diapers (Small Pack)", detail: "Pampers / Molfix", price: 450 },
-  { cat: "baby", icon: "🧸", image: "", name: "Baby Toy", detail: "Assorted", price: 250 },
+  { cat: "baby", icon: "🍼", image: "cerelac.jpg", name: "Cerelac (Stage 1/2/3)", detail: "Assorted flavours, 350g", price: 850 },
+  { cat: "baby", icon: "🥛", image: "baby_milk.jpg", name: "Baby Milk Powder", detail: "NAN / S26 / Lactogen", price: 1200 },
+  { cat: "baby", icon: "🧴", image: "baby_cream.jpg", name: "Baby Cream/Lotion", detail: "Johnsons / Himalaya", price: 300 },
+  { cat: "baby", icon: "🧼", image: "baby_soap.jpg", name: "Baby Soap", detail: "Assorted brands", price: 150 },
+  { cat: "baby", icon: "👶", image: "diapers.jpg", name: "Diapers (Small Pack)", detail: "Pampers / Molfix", price: 450 },
 
   // SNACKS
-  { cat: "snacks", icon: "🍟", image: "", name: "Lays Chips (Small)", detail: "Masala flavour, 30g", price: 50 },
-  { cat: "snacks", icon: "🍪", image: "", name: "Oreo Biscuit Pack", detail: "Original, 100g", price: 80 },
-  { cat: "snacks", icon: "🍫", image: "", name: "Dairy Milk Chocolate", detail: "Small bar, 25g", price: 100 },
-  { cat: "snacks", icon: "🍪", image: "", name: "Sooper Biscuit Family Pack", detail: "Large, 200g", price: 150 },
+  { cat: "snacks", icon: "🍟", image: "lays.jpg", name: "Lays Chips (Small)", detail: "Masala flavour, 30g", price: 50 },
+  { cat: "snacks", icon: "🍪", image: "oreo.jpg", name: "Oreo Biscuit Pack", detail: "Original, 100g", price: 80 },
+  { cat: "snacks", icon: "🍫", image: "dairy_milk.jpg", name: "Dairy Milk Chocolate", detail: "Small bar, 25g", price: 100 },
 
   // JUICES
-  { cat: "juice", icon: "🧃", image: "", name: "Nestle Juice (Small)", detail: "Mango/Orange, 200ml", price: 60 },
-  { cat: "juice", icon: "🧃", image: "", name: "Shezan Juice Pack", detail: "Mixed fruit, 1 litre", price: 250 },
-  { cat: "juice", icon: "🥤", image: "", name: "Coca Cola (Small)", detail: "250ml bottle", price: 60 },
-  { cat: "juice", icon: "🥤", image: "", name: "Sting Energy Drink", detail: "250ml", price: 80 },
+  { cat: "juice", icon: "🧃", image: "nestle_juice.jpg", name: "Nestle Juice (Small)", detail: "Mango/Orange, 200ml", price: 60 },
+  { cat: "juice", icon: "🧃", image: "shezan.jpg", name: "Shezan Juice Pack", detail: "Mixed fruit, 1 litre", price: 250 },
+  { cat: "juice", icon: "🥤", image: "coke.jpg", name: "Coca Cola (Small)", detail: "250ml bottle", price: 60 },
 
-  // PERFUME
-  { cat: "perfume", icon: "🧴", image: "", name: "Body Spray (Small)", detail: "Assorted brands, 100ml", price: 300 },
-  { cat: "perfume", icon: "💐", image: "", name: "Perfume Roll-On", detail: "Ladies fragrance, 50ml", price: 250 },
-
-  // SOAP & HOUSEHOLD
-  { cat: "soap", icon: "🧼", image: "", name: "Lifebuoy Soap", detail: "Single bar, 100g", price: 60 },
-  { cat: "soap", icon: "🧼", image: "", name: "Dettol Soap (Pack of 3)", detail: "100g x 3", price: 180 },
-  { cat: "laundry", icon: "🧺", image: "", name: "Surf Excel (Small)", detail: "Washing powder, 500g", price: 250 },
-  { cat: "laundry", icon: "🧼", image: "", name: "Laundry Soap Bar", detail: "Single bar", price: 50 },
-  { cat: "laundry", icon: "🍽️", image: "", name: "Dishwash Liquid", detail: "Lemon, 250ml", price: 150 }
+  // HOUSEHOLD
+  { cat: "soap", icon: "🧼", image: "lifebuoy.jpg", name: "Lifebuoy Soap", detail: "Single bar, 100g", price: 60 },
+  { cat: "laundry", icon: "🧺", image: "surf.jpg", name: "Surf Excel (Small)", detail: "Washing powder, 500g", price: 250 },
+  { cat: "laundry", icon: "🍽️", image: "dishwash.jpg", name: "Dishwash Liquid", detail: "Lemon, 250ml", price: 150 }
 ];
 
 // ================= RENDER =================
@@ -326,7 +257,7 @@ function renderLadies(filter = "all") {
       <div class="meta"><b>Sizes:</b> ${p.sizes}</div>
       <div class="meta"><b>Colors:</b> ${p.colors}</div>
       <div class="price">Rs ${p.price}</div>
-      <button onclick="orderProduct('${p.name}', ${p.price})">WhatsApp Order</button>
+      <button onclick="orderProduct('${p.name}', ${p.price}, '', '')">WhatsApp Order</button>
     `;
     grid.appendChild(card);
   });
@@ -350,15 +281,23 @@ function renderBazaar(filter = "all") {
       <h3>${p.name}</h3>
       <div class="meta">${p.detail}</div>
       <div class="price">Rs ${p.price}</div>
-      <button onclick="orderProduct('${p.name}', ${p.price})">WhatsApp Order</button>
+      <button onclick="orderProduct('${p.name}', ${p.price}, '${p.image}', '${p.detail}')">WhatsApp Order</button>
     `;
     grid.appendChild(card);
   });
 }
 
 // ================= ORDER =================
-function orderProduct(name, price) {
-  const msg = `Assalam o Alaikum HerHaven Mall!%0A%0AMujhe yeh order karna hai:%0A%0A*Product:* ${name}%0A*Price:* Rs ${price}%0A%0AMeri size/quantity: (yahan likhein)%0A%0AMera naam: %0AMera address: %0A%0AShukriya!`;
+// Yeh function WhatsApp par picture ka link bhejta hai
+function orderProduct(name, price, img, detail) {
+  let imgLink = "";
+  // Agar picture ka naam mojood hai, toh usko link mein badal dein
+  if (img && img.trim() !== "") {
+      imgLink = `%0A*Product Picture:* https://atiqueurrehman407-hue.github.io/HerHaven-Mall/${img}`;
+  }
+
+  const msg = `Assalam o Alaikum HerHaven Mall!%0A%0AMujhe yeh order karna hai:%0A%0A*Product:* ${name}%0A*Detail:* ${detail}%0A*Price:* Rs ${price}${imgLink}%0A%0AMeri size/quantity: (yahan likhein)%0A%0AMera naam: %0AMera address: %0A%0AShukriya!`;
+  
   window.open(`https://wa.me/923193419642?text=${msg}`, "_blank");
 }
 
@@ -388,4 +327,4 @@ renderBazaar();
 </script>
 
 </body>
-           </html>
+</html>
