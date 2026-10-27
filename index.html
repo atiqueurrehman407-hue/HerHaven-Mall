@@ -1,330 +1,130 @@
 <!DOCTYPE html>
-<html lang="ur">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>HerHaven Mall — Sukkur</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: 'Segoe UI', Tahoma, sans-serif; background: #fff5f8; color: #4a2c3a; line-height: 1.6; }
-  header { background: linear-gradient(135deg, #b03060, #7a1f42); color: white; padding: 18px; text-align: center; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.15); }
-  header h1 { font-size: 25px; letter-spacing: 1px; }
-  header p { font-size: 12px; opacity: 0.9; margin-top: 3px; }
-  nav { background: #7a1f42; display: flex; justify-content: center; flex-wrap: wrap; padding: 10px; gap: 6px; }
-  nav button { background: transparent; border: 1px solid rgba(255,255,255,0.4); color: white; padding: 8px 14px; border-radius: 20px; cursor: pointer; font-size: 13px; transition: 0.3s; }
-  nav button:hover, nav button.active { background: white; color: #7a1f42; font-weight: bold; }
-  .page { display: none; padding: 20px; max-width: 1100px; margin: 0 auto; }
+  * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+  body { background: #f8f9fa; color: #333; }
+  
+  /* Top Notice Bar */
+  .top-bar { background: #5a1825; color: white; text-align: center; padding: 8px; font-size: 12px; font-weight: 600; }
+  
+  /* Header & Search */
+  header { background: white; padding: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 100; }
+  .header-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+  .logo { font-size: 24px; font-weight: 700; color: #5a1825; display: flex; align-items: center; gap: 8px; }
+  .logo span { color: #f4b400; }
+  .cart-icon { font-size: 24px; cursor: pointer; color: #5a1825; }
+  
+  .search-box { display: flex; border: 1px solid #ddd; border-radius: 8px; overflow: hidden; }
+  .search-box input { flex: 1; padding: 10px 15px; border: none; outline: none; font-size: 14px; background: #f8f9fa; }
+  .search-box button { background: #f4b400; border: none; padding: 0 20px; font-size: 18px; cursor: pointer; }
+
+  /* Hero Banner */
+  .hero { background: #fff3f5; padding: 20px; margin: 15px; border-radius: 12px; border: 1px solid #ffe0e6; }
+  .hero h2 { color: #111; font-size: 20px; margin-bottom: 10px; }
+  .hero ul { list-style: none; font-size: 13px; color: #555; line-height: 1.8; }
+  .hero ul li::before { content: "✱"; color: #b03060; margin-right: 8px; font-weight: bold; }
+
+  /* Categories Grid */
+  .section-title { font-size: 18px; font-weight: 700; margin: 20px 15px 10px; }
+  .cat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; padding: 0 15px; margin-bottom: 20px; }
+  .cat-box { background: white; border-radius: 10px; padding: 10px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.03); cursor: pointer; border: 1px solid #eee; }
+  .cat-box div { font-size: 30px; margin-bottom: 5px; }
+  .cat-box p { font-size: 11px; font-weight: 600; color: #555; }
+
+  /* Products Grid */
+  .prod-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; padding: 0 15px 20px; }
+  .prod-card { background: white; border-radius: 12px; padding: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border: 1px solid #eee; display: flex; flex-direction: column; }
+  .prod-card .img-box { width: 100%; height: 120px; background: #f9f9f9; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 40px; margin-bottom: 10px; overflow: hidden; }
+  .prod-card .img-box img { width: 100%; height: 100%; object-fit: cover; }
+  .prod-card h3 { font-size: 13px; font-weight: 600; color: #333; margin-bottom: 5px; line-height: 1.3; }
+  .prod-card .price { font-size: 16px; font-weight: 700; color: #111; margin-top: auto; margin-bottom: 10px; }
+  .prod-card button { background: #f4b400; color: #111; border: none; padding: 10px; border-radius: 25px; font-size: 13px; font-weight: 700; cursor: pointer; width: 100%; transition: 0.2s; }
+  .prod-card button:active { transform: scale(0.95); }
+
+  /* Page Sections */
+  .page { display: none; }
   .page.active { display: block; }
-  .hero { background: linear-gradient(135deg, #ffe0ec, #ffd0e0); padding: 30px 20px; border-radius: 15px; text-align: center; margin-bottom: 25px; }
-  .hero h2 { color: #7a1f42; font-size: 23px; margin-bottom: 8px; }
-  .hero p { font-size: 14px; color: #6b3a4f; }
-  .badge { display: inline-block; background: #7a1f42; color: white; padding: 5px 12px; border-radius: 20px; font-size: 12px; margin: 6px 3px 0; }
-  .section-title { color: #7a1f42; font-size: 22px; margin: 25px 0 15px; border-bottom: 3px solid #ffc8dd; padding-bottom: 8px; }
-  .filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; justify-content: center; }
-  .filters button { background: white; border: 1px solid #b03060; color: #b03060; padding: 7px 14px; border-radius: 20px; cursor: pointer; font-size: 13px; }
-  .filters button:hover, .filters button.active { background: #b03060; color: white; }
-  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 16px; }
-  .card { background: white; border-radius: 12px; padding: 16px; box-shadow: 0 3px 12px rgba(176,48,96,0.1); border: 1px solid #f0d0dc; transition: 0.3s; display: flex; flex-direction: column; }
-  .card:hover { transform: translateY(-4px); box-shadow: 0 6px 20px rgba(176,48,96,0.2); }
-  .card .img-box { width: 100%; height: 160px; background: linear-gradient(135deg, #ffe0ec, #ffc8dd); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 50px; margin-bottom: 12px; overflow: hidden; }
-  .card .img-box img { width: 100%; height: 100%; object-fit: cover; }
-  .card h3 { font-size: 15px; color: #7a1f42; margin-bottom: 6px; }
-  .card .meta { font-size: 12px; color: #8a5a70; margin-bottom: 3px; }
-  .card .price { font-size: 18px; font-weight: bold; color: #b03060; margin: 8px 0; margin-top: auto; }
-  .card button { width: 100%; background: #7a1f42; color: white; border: none; padding: 9px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: bold; }
-  .card button:hover { background: #b03060; }
-  .info-box { background: white; border-left: 5px solid #b03060; padding: 16px; border-radius: 10px; margin-bottom: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
-  .info-box h3 { color: #7a1f42; margin-bottom: 8px; font-size: 17px; }
-  .info-box ul { padding-left: 20px; }
-  .info-box li { margin-bottom: 5px; font-size: 13px; }
-  table { width: 100%; border-collapse: collapse; background: white; border-radius: 10px; overflow: hidden; margin-bottom: 20px; font-size: 13px; }
-  th { background: #7a1f42; color: white; padding: 10px; text-align: left; }
-  td { padding: 9px 10px; border-bottom: 1px solid #f0d0dc; }
-  tr:hover td { background: #fff0f5; }
-  .whatsapp-btn { position: fixed; bottom: 20px; right: 20px; background: #25D366; color: white; width: 58px; height: 58px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; text-decoration: none; box-shadow: 0 4px 15px rgba(37,211,102,0.4); z-index: 200; }
-  .footer { background: #7a1f42; color: #ffd0e0; text-align: center; padding: 18px; font-size: 12px; margin-top: 30px; }
-  @media (max-width: 600px) { header h1 { font-size: 21px; } .hero h2 { font-size: 19px; } }
+  
+  /* Bottom Nav (Mobile App Style) */
+  .bottom-nav { position: fixed; bottom: 0; width: 100%; background: white; display: flex; justify-content: space-around; padding: 10px 0; box-shadow: 0 -2px 10px rgba(0,0,0,0.05); z-index: 100; }
+  .nav-item { text-align: center; color: #888; font-size: 11px; font-weight: 600; cursor: pointer; }
+  .nav-item.active { color: #5a1825; }
+  .nav-item span { display: block; font-size: 20px; margin-bottom: 2px; }
+
+  /* WhatsApp Float */
+  .whatsapp-btn { position: fixed; bottom: 75px; right: 15px; background: #25D366; color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 26px; text-decoration: none; box-shadow: 0 4px 15px rgba(37,211,102,0.4); z-index: 200; }
+
+  @media (min-width: 768px) {
+    .prod-grid { grid-template-columns: repeat(4, 1fr); }
+    .cat-grid { grid-template-columns: repeat(8, 1fr); }
+    body { max-width: 800px; margin: 0 auto; background: #e9ecef; }
+    .bottom-nav { max-width: 800px; left: 50%; transform: translateX(-50%); }
+  }
 </style>
 </head>
 <body>
 
+<div class="top-bar">🚚 Delivery in Sukkur City (Rs 150) | Rohri (Rs 250-300) | 🎉 FREE Delivery on Rs 550+</div>
+
 <header>
-  <h1>🌸 HerHaven Mall</h1>
-  <p>Sukkur — Ladies Innerwear + Daily Bazaar</p>
+  <div class="header-top">
+    <div class="logo">🛍️ HerHaven <span>Mall</span></div>
+    <div class="cart-icon">🛒</div>
+  </div>
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="Search for products (e.g. Lays, Cream)..." onkeyup="searchProducts()">
+    <button>🔍</button>
+  </div>
 </header>
 
-<nav>
-  <button class="active" onclick="showPage('home', this)">Home</button>
-  <button onclick="showPage('ladies', this)">Ladies Innerwear</button>
-  <button onclick="showPage('bazaar', this)">Daily Bazaar</button>
-  <button onclick="showPage('size', this)">Size Guide</button>
-  <button onclick="showPage('policy', this)">Policies</button>
-  <button onclick="showPage('contact', this)">Contact</button>
-</nav>
-
-<!-- HOME -->
-<div id="home" class="page active">
+<!-- HOME PAGE -->
+<div id="homePage" class="page active">
+  
   <div class="hero">
-    <h2>Khush Amdeed HerHaven Mall Mein</h2>
-    <p>Sukkur ki khawateen ke liye khaas — <b>Ladies Innerwear</b> (privacy ke saath) aur <b>Daily Bazaar</b> (ghar ka saman, baby care aur beauty products).<br>Ghar baithe shopping karein, bina kisi sharam ke.</p>
-    <span class="badge">🚚 Sukkur & Rohri Delivery</span>
-    <span class="badge">💳 Cash on Delivery</span>
-    <span class="badge">🎉 Rs 5000+ par FREE Delivery</span>
-    <span class="badge">📦 Discreet Packaging</span>
-    <span class="badge">🔒 100% Privacy</span>
-  </div>
-
-  <div class="info-box">
-    <h3>Hamare Sections</h3>
+    <h2>Ghar baithe Sukkur ka bazaar</h2>
     <ul>
-      <li><b>🌸 Ladies Innerwear:</b> Bras, panties, nighties, leggings, maternity wear (Tasveerein nahi).</li>
-      <li><b>🧴 Beauty & Care:</b> Face wash, creams, shampoo, soap, perfumes, cosmetics.</li>
-      <li><b>🍼 Baby & Kids:</b> Cerelac, Milk, Cream, Diapers, Baby soap, toys.</li>
-      <li><b>🧃 Snacks & Drinks:</b> Juices, chips, biscuits, chocolates, soft drinks.</li>
-      <li><b>🧺 Household:</b> Surf, dishwash, laundry soaps.</li>
-    </ul>
-  </div>
-</div>
-
-<!-- LADIES INNERWEAR (Picture Free) -->
-<div id="ladies" class="page">
-  <h2 class="section-title">🌸 Ladies Innerwear</h2>
-  <p style="font-size:13px; color:#8a5a70; margin-bottom:15px;">
-    <b>Privacy Policy:</b> Yahan products ki tasveerein nahi hain — sirf poori tafseel. Order WhatsApp par karein.
-  </p>
-
-  <div class="filters">
-    <button class="active" onclick="filterLadies('all', this)">Sab</button>
-    <button onclick="filterLadies('bra', this)">Bras</button>
-    <button onclick="filterLadies('panty', this)">Panties</button>
-    <button onclick="filterLadies('nighty', this)">Nighties</button>
-    <button onclick="filterLadies('pajama', this)">Pajama Sets</button>
-    <button onclick="filterLadies('maternity', this)">Maternity</button>
-    <button onclick="filterLadies('legging', this)">Leggings</button>
-  </div>
-
-  <div class="grid" id="ladiesGrid"></div>
-</div>
-
-<!-- DAILY BAZAAR -->
-<div id="bazaar" class="page">
-  <h2 class="section-title">🛒 Daily Bazaar</h2>
-  <p style="font-size:13px; color:#8a5a70; margin-bottom:15px;">
-    Ghar ka saman, Baby care aur Beauty products.
-  </p>
-
-  <div class="filters">
-    <button class="active" onclick="filterBazaar('all', this)">Sab</button>
-    <button onclick="filterBazaar('beauty', this)">Beauty & Care</button>
-    <button onclick="filterBazaar('baby', this)">Baby & Kids</button>
-    <button onclick="filterBazaar('snacks', this)">Snacks</button>
-    <button onclick="filterBazaar('juice', this)">Juices</button>
-    <button onclick="filterBazaar('perfume', this)">Perfume</button>
-    <button onclick="filterBazaar('soap', this)">Soap</button>
-    <button onclick="filterBazaar('laundry', this)">Household</button>
-  </div>
-
-  <div class="grid" id="bazaarGrid"></div>
-</div>
-
-<!-- SIZE GUIDE -->
-<div id="size" class="page">
-  <h2 class="section-title">📏 Size Guide</h2>
-
-  <div class="info-box">
-    <h3>Bra Size Chart (Inches)</h3>
-    <table>
-      <tr><th>Size</th><th>Underbust</th><th>Overbust</th><th>Cup</th></tr>
-      <tr><td>32B</td><td>28-30</td><td>32-33</td><td>B</td></tr>
-      <tr><td>34B</td><td>30-32</td><td>34-35</td><td>B</td></tr>
-      <tr><td>36B</td><td>32-34</td><td>36-37</td><td>B</td></tr>
-      <tr><td>38B</td><td>34-36</td><td>38-39</td><td>B</td></tr>
-    </table>
-  </div>
-</div>
-
-<!-- POLICIES -->
-<div id="policy" class="page">
-  <h2 class="section-title">📜 Policies</h2>
-
-  <div class="info-box">
-    <h3>🔒 Privacy Policy</h3>
-    <ul>
-      <li>Aapki maloomat sirf delivery ke liye use hogi.</li>
-      <li>Data kisi third party ko nahi diya jayega.</li>
-      <li>WhatsApp chat private — sirf female staff.</li>
-      <li>Parcel par brand/product name nahi hoga.</li>
+      <li><b>Free delivery on orders above Rs 550</b></li>
+      <li>Delivery time: 2-3 Working Days</li>
+      <li>COD & NayaPay accepted</li>
+      <li>100% Privacy & Discreet Packaging</li>
     </ul>
   </div>
 
-  <div class="info-box">
-    <h3>💳 Payment Details</h3>
-    <ul>
-      <li><b>COD:</b> Parcel haath mein, tab paise.</li>
-      <li><b>Advance Payment (NayaPay):</b> Advance par Rs 50 discount milega.</li>
-      <li><b>Bank:</b> NayaPay</li>
-      <li><b>Account Number:</b> 03193419642</li>
-      <li><b>Account Title:</b> Atique ur Rehman</li>
-    </ul>
+  <div class="section-title">Shop by Category</div>
+  <div class="cat-grid">
+    <div class="cat-box" onclick="filterCat('baby')"><div>🍼</div><p>Baby Care</p></div>
+    <div class="cat-box" onclick="filterCat('beauty')"><div>🧴</div><p>Beauty</p></div>
+    <div class="cat-box" onclick="filterCat('snacks')"><div>🍟</div><p>Snacks</p></div>
+    <div class="cat-box" onclick="filterCat('juice')"><div>🧃</div><p>Drinks</p></div>
+    <div class="cat-box" onclick="filterCat('household')"><div>🧺</div><p>Household</p></div>
+    <div class="cat-box" onclick="filterCat('innerwear')"><div>🌸</div><p>Ladies</p></div>
+    <div class="cat-box" onclick="filterCat('all')"><div>🛍️</div><p>All</p></div>
   </div>
+
+  <div class="section-title" id="homeTitle">Recommended for you</div>
+  <div class="prod-grid" id="homeProducts"></div>
 </div>
 
-<!-- CONTACT -->
-<div id="contact" class="page">
-  <h2 class="section-title">📞 Contact</h2>
-
-  <div class="info-box">
-    <h3>WhatsApp (Female Staff)</h3>
-    <p>Order ya sawal ke liye WhatsApp karein:</p>
-    <p style="font-size:18px; font-weight:bold; color:#25D366; margin-top:8px;">📱 0319-3419642</p>
-  </div>
-
-  <div class="info-box">
-    <h3>Delivery Charges</h3>
-    <ul>
-      <li><b>Sukkur (Any Area):</b> Rs 150</li>
-      <li><b>Rohri:</b> Rs 250 - Rs 300</li>
-      <li><b>Special Offer:</b> Rs 5000+ par FREE delivery</li>
-      <li>Delivery Time: 2-3 working days</li>
-    </ul>
-  </div>
+<!-- LADIES PAGE -->
+<div id="ladiesPage" class="page">
+  <div class="section-title">Ladies Innerwear (Privacy Guaranteed)</div>
+  <div class="prod-grid" id="ladiesProductsGrid"></div>
 </div>
 
-<a href="https://wa.me/923193419642?text=Assalam%20o%20Alaikum%2C%20HerHaven%20Mall%20se%20order%20karna%20hai" class="whatsapp-btn" target="_blank">💬</a>
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/923193419642" class="whatsapp-btn" target="_blank">💬</a>
 
-<div class="footer">
-  <p>© 2025 HerHaven Mall — Sukkur</p>
-  <p style="margin-top:5px;">Privacy • Quality • Bharosa</p>
+<!-- BOTTOM NAV -->
+<div class="bottom-nav">
+  <div class="nav-item active" onclick="showPage('home', this)"><span>🏠</span>Home</div>
+  <div class="nav-item" onclick="showPage('ladies', this)"><span>🌸</span>Ladies</div>
+  <div class="nav-item" onclick="window.open('https://wa.me/923193419642', '_blank')"><span>💬</span>WhatsApp</div>
 </div>
 
 <script>
-// ================= LADIES INNERWEAR =================
-// Yahan image: "file_name.jpg" likh kar apni picture ka naam daal dein.
-const ladiesProducts = [
-  { cat: "bra", icon: "👙", image: "", name: "Cotton Daily Bra", fabric: "100% Cotton, non-padded, wire-free", sizes: "32B, 34B, 36B, 38B", colors: "White, Skin, Black", price: 650 },
-  { cat: "bra", icon: "👙", image: "", name: "Padded T-Shirt Bra", fabric: "Lycra + Cotton, lightly padded", sizes: "34B, 36B, 38B", colors: "Skin, Black, Maroon", price: 1200 },
-  { cat: "panty", icon: "🩲", image: "", name: "Cotton Panty (Pack of 3)", fabric: "100% Cotton, mid-waist", sizes: "S, M, L, XL", colors: "Assorted", price: 800 },
-  { cat: "nighty", icon: "👗", image: "", name: "Cotton Nighty (Full Sleeve)", fabric: "Printed Cotton, knee length", sizes: "S, M, L, XL", colors: "Floral, Maroon, Navy", price: 1500 },
-  { cat: "nighty", icon: "👗", image: "", name: "Satin Nighty", fabric: "Satin, half sleeve, ankle length", sizes: "M, L, XL", colors: "Maroon, Black, Purple", price: 2200 }
-];
-
-// ================= DAILY BAZAAR =================
-// Yahan image: "file_name.jpg" likh kar apni picture ka naam daal dein.
-// Jab aap picture ka naam likhengi, toh wo website par nazar aayegi.
-const bazaarProducts = [
-  // BEAUTY & CARE
-  { cat: "beauty", icon: "🧴", image: "beauty_cream.jpg", name: "Beauty Cream", detail: "Whitening cream, 50g", price: 350 },
-  { cat: "beauty", icon: "🧴", image: "face_wash.jpg", name: "Face Wash", detail: "Assorted brands, 100g", price: 450 },
-  { cat: "beauty", icon: "🪒", image: "hair_removal.jpg", name: "Hair Removal Cream", detail: "Veet / Anne French", price: 350 },
-  { cat: "beauty", icon: "🪒", image: "razor.jpg", name: "Shaving Razor", detail: "Ladies razor (2 pcs pack)", price: 150 },
-  { cat: "beauty", icon: "🧴", image: "shampoo.jpg", name: "Shampoo (Small)", detail: "Sunsilk / Head&Shoulders, 180ml", price: 400 },
-
-  // BABY & KIDS
-  { cat: "baby", icon: "🍼", image: "cerelac.jpg", name: "Cerelac (Stage 1/2/3)", detail: "Assorted flavours, 350g", price: 850 },
-  { cat: "baby", icon: "🥛", image: "baby_milk.jpg", name: "Baby Milk Powder", detail: "NAN / S26 / Lactogen", price: 1200 },
-  { cat: "baby", icon: "🧴", image: "baby_cream.jpg", name: "Baby Cream/Lotion", detail: "Johnsons / Himalaya", price: 300 },
-  { cat: "baby", icon: "🧼", image: "baby_soap.jpg", name: "Baby Soap", detail: "Assorted brands", price: 150 },
-  { cat: "baby", icon: "👶", image: "diapers.jpg", name: "Diapers (Small Pack)", detail: "Pampers / Molfix", price: 450 },
-
-  // SNACKS
-  { cat: "snacks", icon: "🍟", image: "lays.jpg", name: "Lays Chips (Small)", detail: "Masala flavour, 30g", price: 50 },
-  { cat: "snacks", icon: "🍪", image: "oreo.jpg", name: "Oreo Biscuit Pack", detail: "Original, 100g", price: 80 },
-  { cat: "snacks", icon: "🍫", image: "dairy_milk.jpg", name: "Dairy Milk Chocolate", detail: "Small bar, 25g", price: 100 },
-
-  // JUICES
-  { cat: "juice", icon: "🧃", image: "nestle_juice.jpg", name: "Nestle Juice (Small)", detail: "Mango/Orange, 200ml", price: 60 },
-  { cat: "juice", icon: "🧃", image: "shezan.jpg", name: "Shezan Juice Pack", detail: "Mixed fruit, 1 litre", price: 250 },
-  { cat: "juice", icon: "🥤", image: "coke.jpg", name: "Coca Cola (Small)", detail: "250ml bottle", price: 60 },
-
-  // HOUSEHOLD
-  { cat: "soap", icon: "🧼", image: "lifebuoy.jpg", name: "Lifebuoy Soap", detail: "Single bar, 100g", price: 60 },
-  { cat: "laundry", icon: "🧺", image: "surf.jpg", name: "Surf Excel (Small)", detail: "Washing powder, 500g", price: 250 },
-  { cat: "laundry", icon: "🍽️", image: "dishwash.jpg", name: "Dishwash Liquid", detail: "Lemon, 250ml", price: 150 }
-];
-
-// ================= RENDER =================
-function renderLadies(filter = "all") {
-  const grid = document.getElementById("ladiesGrid");
-  grid.innerHTML = "";
-  const list = filter === "all" ? ladiesProducts : ladiesProducts.filter(p => p.cat === filter);
-  list.forEach(p => {
-    const card = document.createElement("div");
-    card.className = "card";
-    card.innerHTML = `
-      <div class="img-box">${p.icon}</div>
-      <h3>${p.name}</h3>
-      <div class="meta"><b>Fabric:</b> ${p.fabric}</div>
-      <div class="meta"><b>Sizes:</b> ${p.sizes}</div>
-      <div class="meta"><b>Colors:</b> ${p.colors}</div>
-      <div class="price">Rs ${p.price}</div>
-      <button onclick="orderProduct('${p.name}', ${p.price}, '', '')">WhatsApp Order</button>
-    `;
-    grid.appendChild(card);
-  });
-}
-
-function renderBazaar(filter = "all") {
-  const grid = document.getElementById("bazaarGrid");
-  grid.innerHTML = "";
-  const list = filter === "all" ? bazaarProducts : bazaarProducts.filter(p => p.cat === filter);
-  list.forEach(p => {
-    const card = document.createElement("div");
-    card.className = "card";
-    
-    let imgContent = p.icon;
-    if (p.image && p.image.trim() !== "") {
-      imgContent = `<img src="${p.image}" alt="${p.name}">`;
-    }
-
-    card.innerHTML = `
-      <div class="img-box">${imgContent}</div>
-      <h3>${p.name}</h3>
-      <div class="meta">${p.detail}</div>
-      <div class="price">Rs ${p.price}</div>
-      <button onclick="orderProduct('${p.name}', ${p.price}, '${p.image}', '${p.detail}')">WhatsApp Order</button>
-    `;
-    grid.appendChild(card);
-  });
-}
-
-// ================= ORDER =================
-// Yeh function WhatsApp par picture ka link bhejta hai
-function orderProduct(name, price, img, detail) {
-  let imgLink = "";
-  // Agar picture ka naam mojood hai, toh usko link mein badal dein
-  if (img && img.trim() !== "") {
-      imgLink = `%0A*Product Picture:* https://atiqueurrehman407-hue.github.io/HerHaven-Mall/${img}`;
-  }
-
-  const msg = `Assalam o Alaikum HerHaven Mall!%0A%0AMujhe yeh order karna hai:%0A%0A*Product:* ${name}%0A*Detail:* ${detail}%0A*Price:* Rs ${price}${imgLink}%0A%0AMeri size/quantity: (yahan likhein)%0A%0AMera naam: %0AMera address: %0A%0AShukriya!`;
-  
-  window.open(`https://wa.me/923193419642?text=${msg}`, "_blank");
-}
-
-// ================= FILTERS =================
-function filterLadies(cat, btn) {
-  document.querySelectorAll("#ladies .filters button").forEach(b => b.classList.remove("active"));
-  btn.classList.add("active");
-  renderLadies(cat);
-}
-function filterBazaar(cat, btn) {
-  document.querySelectorAll("#bazaar .filters button").forEach(b => b.classList.remove("active"));
-  btn.classList.add("active");
-  renderBazaar(cat);
-}
-
-// ================= NAV =================
-function showPage(id, btn) {
-  document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
-  document.getElementById(id).classList.add("active");
-  document.querySelectorAll("nav button").forEach(b => b.classList.remove("active"));
-  btn.classList.add("active");
-  window.scrollTo(0, 0);
-}
-
-renderLadies();
-renderBazaar();
-</script>
-
-</body>
-</html>
+// Yahan Products ki List hai (image:
