@@ -127,4 +127,127 @@
 </div>
 
 <script>
-// Yahan Products ki List hai (image:
+// Yahan Products ki List hai (image: "" mein picture ka naam likhein)
+const allProducts = [
+  // BABY CARE
+  { cat: "baby", icon: "🍼", image: "", name: "Cerelac (Stage 1/2/3)", detail: "350g", price: 850 },
+  { cat: "baby", icon: "🥛", image: "", name: "Baby Milk Powder", detail: "NAN / S26", price: 1200 },
+  { cat: "baby", icon: "🧴", image: "", name: "Baby Cream/Lotion", detail: "Johnsons", price: 300 },
+  
+  // BEAUTY
+  { cat: "beauty", icon: "🧴", image: "", name: "Beauty Cream", detail: "Whitening 50g", price: 350 },
+  { cat: "beauty", icon: "🧴", image: "", name: "Face Wash", detail: "100g", price: 450 },
+  { cat: "beauty", icon: "🪒", image: "", name: "Hair Removal Cream", detail: "Veet", price: 350 },
+  { cat: "beauty", icon: "🧴", image: "", name: "Shampoo", detail: "180ml", price: 400 },
+
+  // SNACKS
+  { cat: "snacks", icon: "🍟", image: "", name: "Lays Chips", detail: "Masala 30g", price: 50 },
+  { cat: "snacks", icon: "🍪", image: "", name: "Oreo Biscuit", detail: "100g", price: 80 },
+  { cat: "snacks", icon: "🍫", image: "", name: "Dairy Milk", detail: "25g", price: 100 },
+
+  // JUICES
+  { cat: "juice", icon: "🧃", image: "", name: "Nestle Juice", detail: "200ml", price: 60 },
+  { cat: "juice", icon: "🥤", image: "", name: "Coca Cola", detail: "250ml", price: 60 },
+
+  // HOUSEHOLD
+  { cat: "household", icon: "🧼", image: "", name: "Lifebuoy Soap", detail: "100g", price: 60 },
+  { cat: "household", icon: "🧺", image: "", name: "Surf Excel", detail: "500g", price: 250 },
+  
+  // LADIES INNERWEAR
+  { cat: "innerwear", icon: "👙", image: "", name: "Cotton Daily Bra", fabric: "Cotton", sizes: "32B-38B", price: 650 },
+  { cat: "innerwear", icon: "👗", image: "", name: "Cotton Nighty", fabric: "Printed", sizes: "S-XL", price: 1500 }
+];
+
+// Render Home Products
+function renderHome(productsToRender) {
+  const grid = document.getElementById("homeProducts");
+  grid.innerHTML = "";
+  productsToRender.forEach(p => {
+    if(p.cat === "innerwear") return; // Innerwear home page par nahi dikhayenge
+
+    let imgContent = p.icon;
+    if (p.image && p.image.trim() !== "") {
+      imgContent = `<img src="${p.image}" alt="${p.name}">`;
+    }
+
+    grid.innerHTML += `
+      <div class="prod-card">
+        <div class="img-box">${imgContent}</div>
+        <h3>${p.name}</h3>
+        <div style="font-size:11px; color:#666; margin-bottom:5px;">${p.detail}</div>
+        <div class="price">Rs ${p.price}</div>
+        <button onclick="orderProduct('${p.name}', ${p.price}, '${p.image}')">Add to Cart</button>
+      </div>
+    `;
+  });
+}
+
+// Render Ladies Products
+function renderLadies() {
+  const grid = document.getElementById("ladiesProductsGrid");
+  grid.innerHTML = "";
+  allProducts.filter(p => p.cat === "innerwear").forEach(p => {
+    grid.innerHTML += `
+      <div class="prod-card">
+        <div class="img-box">${p.icon}</div>
+        <h3>${p.name}</h3>
+        <div style="font-size:11px; color:#666; margin-bottom:5px;">Size: ${p.sizes}</div>
+        <div class="price">Rs ${p.price}</div>
+        <button onclick="orderProduct('${p.name}', ${p.price}, '')">WhatsApp Order</button>
+      </div>
+    `;
+  });
+}
+
+// Filter Category
+function filterCat(cat) {
+  if(cat === 'innerwear') {
+    showPage('ladies', document.querySelectorAll('.nav-item')[1]);
+    return;
+  }
+  const filtered = cat === 'all' ? allProducts : allProducts.filter(p => p.cat === cat);
+  renderHome(filtered);
+  document.getElementById('homeTitle').innerText = cat === 'all' ? 'All Products' : 'Category: ' + cat.charAt(0).toUpperCase() + cat.slice(1);
+}
+
+// Search Function
+function searchProducts() {
+  const query = document.getElementById("searchInput").value.toLowerCase();
+  const filtered = allProducts.filter(p => p.name.toLowerCase().includes(query) && p.cat !== 'innerwear');
+  renderHome(filtered);
+  document.getElementById('homeTitle').innerText = query ? 'Search Results for: ' + query : 'Recommended for you';
+}
+
+// WhatsApp Order Function
+function orderProduct(name, price, img) {
+  let imgLink = "";
+  if (img && img.trim() !== "") {
+      imgLink = `%0A*Product Picture:* https://atiqueurrehman407-hue.github.io/HerHaven-Mall/${img}`;
+  }
+  const msg = `Assalam o Alaikum HerHaven Mall!%0A%0AMujhe yeh order karna hai:%0A%0A*Product:* ${name}%0A*Price:* Rs ${price}${imgLink}%0A%0AMeri size/quantity: (yahan likhein)%0A%0AMera naam: %0AMera address: %0A%0AShukriya!`;
+  window.open(`https://wa.me/923193419642?text=${msg}`, "_blank");
+}
+
+// Navigation
+function showPage(pageId, btn) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  
+  if(pageId === 'home') {
+    document.getElementById('homePage').classList.add('active');
+    btn.classList.add('active');
+    renderHome(allProducts);
+    document.getElementById('homeTitle').innerText = 'Recommended for you';
+  } else if(pageId === 'ladies') {
+    document.getElementById('ladiesPage').classList.add('active');
+    btn.classList.add('active');
+    renderLadies();
+  }
+  window.scrollTo(0, 0);
+}
+
+// Load Initial
+renderHome(allProducts);
+</script>
+</body>
+</html>
