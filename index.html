@@ -25,12 +25,13 @@
   .filters button { background: white; border: 1px solid #b03060; color: #b03060; padding: 7px 14px; border-radius: 20px; cursor: pointer; font-size: 13px; }
   .filters button:hover, .filters button.active { background: #b03060; color: white; }
   .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 16px; }
-  .card { background: white; border-radius: 12px; padding: 16px; box-shadow: 0 3px 12px rgba(176,48,96,0.1); border: 1px solid #f0d0dc; transition: 0.3s; }
+  .card { background: white; border-radius: 12px; padding: 16px; box-shadow: 0 3px 12px rgba(176,48,96,0.1); border: 1px solid #f0d0dc; transition: 0.3s; display: flex; flex-direction: column; }
   .card:hover { transform: translateY(-4px); box-shadow: 0 6px 20px rgba(176,48,96,0.2); }
-  .card .icon { width: 100%; height: 90px; background: linear-gradient(135deg, #ffe0ec, #ffc8dd); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 40px; margin-bottom: 12px; }
+  .card .img-box { width: 100%; height: 140px; background: linear-gradient(135deg, #ffe0ec, #ffc8dd); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 45px; margin-bottom: 12px; overflow: hidden; }
+  .card .img-box img { width: 100%; height: 100%; object-fit: cover; }
   .card h3 { font-size: 15px; color: #7a1f42; margin-bottom: 6px; }
   .card .meta { font-size: 12px; color: #8a5a70; margin-bottom: 3px; }
-  .card .price { font-size: 18px; font-weight: bold; color: #b03060; margin: 8px 0; }
+  .card .price { font-size: 18px; font-weight: bold; color: #b03060; margin: 8px 0; margin-top: auto; }
   .card button { width: 100%; background: #7a1f42; color: white; border: none; padding: 9px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: bold; }
   .card button:hover { background: #b03060; }
   .info-box { background: white; border-left: 5px solid #b03060; padding: 16px; border-radius: 10px; margin-bottom: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
@@ -66,7 +67,7 @@
 <div id="home" class="page active">
   <div class="hero">
     <h2>Khush Amdeed HerHaven Mall Mein</h2>
-    <p>Sukkur ki khawateen ke liye khaas — <b>Ladies Innerwear</b> (privacy ke saath) aur <b>Daily Bazaar</b> (ghar ka saman aur beauty products).<br>Ghar baithe shopping karein, bina kisi sharam ke.</p>
+    <p>Sukkur ki khawateen ke liye khaas — <b>Ladies Innerwear</b> (privacy ke saath) aur <b>Daily Bazaar</b> (ghar ka saman, baby care aur beauty products).<br>Ghar baithe shopping karein, bina kisi sharam ke.</p>
     <span class="badge">🚚 Sukkur & Rohri Delivery</span>
     <span class="badge">💳 Cash on Delivery</span>
     <span class="badge">🎉 Rs 5000+ par FREE Delivery</span>
@@ -75,10 +76,13 @@
   </div>
 
   <div class="info-box">
-    <h3>Hamare Do Sections</h3>
+    <h3>Hamare Sections</h3>
     <ul>
-      <li><b>🌸 Ladies Innerwear:</b> Bras, panties, nighties, leggings, maternity wear — <b>Rs 500 se Rs 5000 tak</b>. Tasveerein nahi, sirf poori tafseel (privacy ke liye).</li>
-      <li><b>🛒 Daily Bazaar:</b> Beauty creams, shampoos, snacks, juices, soap, surf, dishwash — <b>Rs 50 se Rs 500 tak</b>. Brand aur size ke saath.</li>
+      <li><b>🌸 Ladies Innerwear:</b> Bras, panties, nighties, leggings, maternity wear (Tasveerein nahi).</li>
+      <li><b>🧴 Beauty & Care:</b> Face wash, creams, shampoo, soap, perfumes, cosmetics.</li>
+      <li><b>🍼 Baby & Kids:</b> Cerelac, Milk, Cream, Diapers, Baby soap, toys.</li>
+      <li><b>🧃 Snacks & Drinks:</b> Juices, chips, biscuits, chocolates, soft drinks.</li>
+      <li><b>🧺 Household:</b> Surf, dishwash, laundry soaps.</li>
     </ul>
   </div>
 
@@ -88,7 +92,7 @@
       <li><b>Discreet Packaging:</b> Parcel plain bag mein — koi brand name nahi.</li>
       <li><b>Female WhatsApp Support:</b> Sirf khawateen staff.</li>
       <li><b>Size Exchange:</b> 3 din mein exchange (innerwear par return nahi).</li>
-      <li><b>COD + EasyPaisa/NayaPay:</b> Parcel haath mein aaye, tab paise dein.</li>
+      <li><b>COD + NayaPay:</b> Parcel haath mein aaye, tab paise dein.</li>
       <li><b>Free Delivery:</b> Rs 5000 se upar ki shopping par delivery bilkul free hai.</li>
     </ul>
   </div>
@@ -96,7 +100,7 @@
 
 <!-- LADIES INNERWEAR (Picture Free) -->
 <div id="ladies" class="page">
-  <h2 class="section-title">🌸 Ladies Innerwear (Rs 500 – Rs 5000)</h2>
+  <h2 class="section-title">🌸 Ladies Innerwear</h2>
   <p style="font-size:13px; color:#8a5a70; margin-bottom:15px;">
     <b>Privacy Policy:</b> Yahan products ki tasveerein nahi hain — sirf poori tafseel. Order WhatsApp par karein.
   </p>
@@ -114,22 +118,22 @@
   <div class="grid" id="ladiesGrid"></div>
 </div>
 
-<!-- DAILY BAZAAR (Beauty, Snacks, etc.) -->
+<!-- DAILY BAZAAR -->
 <div id="bazaar" class="page">
-  <h2 class="section-title">🛒 Daily Bazaar (Rs 50 – Rs 1000)</h2>
+  <h2 class="section-title">🛒 Daily Bazaar</h2>
   <p style="font-size:13px; color:#8a5a70; margin-bottom:15px;">
-    Ghar ka saman aur Beauty products — snacks, drinks, creams, shampoos, soap, surf, dishwash.
+    Ghar ka saman, Baby care aur Beauty products.
   </p>
 
   <div class="filters">
     <button class="active" onclick="filterBazaar('all', this)">Sab</button>
     <button onclick="filterBazaar('beauty', this)">Beauty & Care</button>
+    <button onclick="filterBazaar('baby', this)">Baby & Kids</button>
     <button onclick="filterBazaar('snacks', this)">Snacks</button>
     <button onclick="filterBazaar('juice', this)">Juices</button>
     <button onclick="filterBazaar('perfume', this)">Perfume</button>
     <button onclick="filterBazaar('soap', this)">Soap</button>
-    <button onclick="filterBazaar('laundry', this)">Laundry</button>
-    <button onclick="filterBazaar('dishwash', this)">Dishwash</button>
+    <button onclick="filterBazaar('laundry', this)">Household</button>
   </div>
 
   <div class="grid" id="bazaarGrid"></div>
@@ -175,17 +179,6 @@
       <tr><td>XL</td><td>40-42</td><td>58-60</td><td>16.5</td></tr>
     </table>
   </div>
-
-  <div class="info-box">
-    <h3>Leggings Size Chart (Inches)</h3>
-    <table>
-      <tr><th>Size</th><th>Waist</th><th>Hip</th><th>Length</th></tr>
-      <tr><td>S</td><td>26-28</td><td>34-36</td><td>38</td></tr>
-      <tr><td>M</td><td>28-30</td><td>36-38</td><td>38</td></tr>
-      <tr><td>L</td><td>30-32</td><td>38-40</td><td>39</td></tr>
-      <tr><td>XL</td><td>32-34</td><td>40-42</td><td>39</td></tr>
-    </table>
-  </div>
 </div>
 
 <!-- POLICIES -->
@@ -215,7 +208,6 @@
     <h3>🔄 Return & Exchange</h3>
     <ul>
       <li><b>Innerwear:</b> Sirf size exchange 3 din mein (return nahi).</li>
-      <li><b>Nighties/Leggings:</b> 3 din mein exchange, tag intact ho.</li>
       <li><b>Daily Bazaar items:</b> Sealed packet ho toh exchange — khula nahi.</li>
       <li>Exchange delivery charges customer ke zimme.</li>
       <li>Defective product par hum charges uthayenge.</li>
@@ -268,64 +260,55 @@ const ladiesProducts = [
   { cat: "bra", icon: "👙", name: "Cotton Daily Bra", fabric: "100% Cotton, non-padded, wire-free", sizes: "32B, 34B, 36B, 38B", colors: "White, Skin, Black", price: 650 },
   { cat: "bra", icon: "👙", name: "Padded T-Shirt Bra", fabric: "Lycra + Cotton, lightly padded", sizes: "34B, 36B, 38B", colors: "Skin, Black, Maroon", price: 1200 },
   { cat: "bra", icon: "👙", name: "Sports Bra", fabric: "Stretchable Lycra, full coverage", sizes: "S, M, L, XL", colors: "Black, Grey, Pink", price: 900 },
-  { cat: "bra", icon: "👙", name: "Premium Lace Bra", fabric: "Lace + Cotton, padded", sizes: "34B, 36B, 38C", colors: "Maroon, Black", price: 2500 },
   { cat: "panty", icon: "🩲", name: "Cotton Panty (Pack of 3)", fabric: "100% Cotton, mid-waist", sizes: "S, M, L, XL", colors: "Assorted", price: 800 },
   { cat: "panty", icon: "🩲", name: "Seamless Panty", fabric: "Nylon + Spandex, no-show", sizes: "M, L, XL", colors: "Skin, Black, White", price: 550 },
-  { cat: "panty", icon: "🩲", name: "Camisole (Cotton)", fabric: "Cotton, sleeveless, adjustable straps", sizes: "S, M, L, XL", colors: "White, Skin, Black", price: 600 },
-  { cat: "panty", icon: "🩲", name: "Premium Silk Panty Set", fabric: "Silk blend, lace trim", sizes: "M, L, XL", colors: "Maroon, Black, Purple", price: 1800 },
   { cat: "nighty", icon: "👗", name: "Cotton Nighty (Full Sleeve)", fabric: "Printed Cotton, knee length", sizes: "S, M, L, XL", colors: "Floral, Maroon, Navy", price: 1500 },
   { cat: "nighty", icon: "👗", name: "Satin Nighty", fabric: "Satin, half sleeve, ankle length", sizes: "M, L, XL", colors: "Maroon, Black, Purple", price: 2200 },
-  { cat: "nighty", icon: "👗", name: "Maxi Nighty (Cotton)", fabric: "Soft Cotton, full length, loose fit", sizes: "M, L, XL, XXL", colors: "Printed", price: 1800 },
-  { cat: "nighty", icon: "👗", name: "Bridal Nighty (Premium)", fabric: "Satin + Lace, embroidered", sizes: "M, L, XL", colors: "Red, Maroon, Black", price: 4500 },
-  { cat: "pajama", icon: "🩳", name: "Cotton Pajama Set", fabric: "Cotton, shirt + trouser", sizes: "S, M, L, XL", colors: "Blue, Pink, Grey", price: 2000 },
-  { cat: "pajama", icon: "🩳", name: "Shorts Night Set", fabric: "Cotton blend, t-shirt + shorts", sizes: "S, M, L", colors: "Printed", price: 1400 },
-  { cat: "maternity", icon: "🤰", name: "Nursing Bra", fabric: "Cotton, front-open clips", sizes: "34B, 36B, 38B, 40B", colors: "Skin, White", price: 1100 },
-  { cat: "maternity", icon: "🤰", name: "Maternity Nighty", fabric: "Cotton, loose fit, feeding zip", sizes: "M, L, XL", colors: "Floral, Grey", price: 1900 },
-  { cat: "legging", icon: "🧦", name: "Cotton Leggings", fabric: "Cotton Lycra, 4-way stretch", sizes: "S, M, L, XL", colors: "Black, Navy, Maroon", price: 700 },
-  { cat: "legging", icon: "🧦", name: "Winter Fleece Leggings", fabric: "Fleece inner, warm", sizes: "M, L, XL", colors: "Black, Brown", price: 1200 }
+  { cat: "legging", icon: "🧦", name: "Cotton Leggings", fabric: "Cotton Lycra, 4-way stretch", sizes: "S, M, L, XL", colors: "Black, Navy, Maroon", price: 700 }
 ];
 
 // ================= DAILY BAZAAR =================
+// Yahan image: "file_name.jpg" likh kar apni picture ka naam daal dein.
+// Agar picture nahi hai, toh icon: "emoji" rehne dein.
 const bazaarProducts = [
   // BEAUTY & CARE
-  { cat: "beauty", icon: "🧴", name: "Beauty Cream", detail: "Fairness/Whitening cream, 50g", price: 350 },
-  { cat: "beauty", icon: "🧴", name: "Shampoo (Small)", detail: "Sunslik / Head&Shoulders, 180ml", price: 400 },
-  { cat: "beauty", icon: "🪒", name: "Hair Removal Cream", detail: "Veet / Anne French", price: 350 },
-  { cat: "beauty", icon: "🪒", name: "Shaving Razor", detail: "Ladies razor (2 pcs pack)", price: 150 },
-  { cat: "beauty", icon: "🧴", name: "Face Wash", detail: "Neutrogena / Garnier, 100g", price: 450 },
-  { cat: "beauty", icon: "💄", name: "Lipstick (Local)", detail: "Assorted shades", price: 200 },
-  
+  { cat: "beauty", icon: "🧴", image: "", name: "Beauty Cream", detail: "Whitening cream, 50g", price: 350 },
+  { cat: "beauty", icon: "🧴", image: "", name: "Face Wash", detail: "Assorted brands, 100g", price: 450 },
+  { cat: "beauty", icon: "🪒", image: "", name: "Hair Removal Cream", detail: "Veet / Anne French", price: 350 },
+  { cat: "beauty", icon: "🪒", image: "", name: "Shaving Razor", detail: "Ladies razor (2 pcs pack)", price: 150 },
+  { cat: "beauty", icon: "💄", image: "", name: "Lipstick", detail: "Assorted shades", price: 200 },
+  { cat: "beauty", icon: "🧴", image: "", name: "Shampoo (Small)", detail: "Sunsilk / Head&Shoulders, 180ml", price: 400 },
+
+  // BABY & KIDS
+  { cat: "baby", icon: "🍼", image: "", name: "Cerelac (Stage 1/2/3)", detail: "Assorted flavours, 350g", price: 850 },
+  { cat: "baby", icon: "🥛", image: "", name: "Baby Milk Powder", detail: "NAN / S26 / Lactogen", price: 1200 },
+  { cat: "baby", icon: "🧴", image: "", name: "Baby Cream/Lotion", detail: "Johnsons / Himalaya", price: 300 },
+  { cat: "baby", icon: "🧼", image: "", name: "Baby Soap", detail: "Assorted brands", price: 150 },
+  { cat: "baby", icon: "👶", image: "", name: "Diapers (Small Pack)", detail: "Pampers / Molfix", price: 450 },
+  { cat: "baby", icon: "🧸", image: "", name: "Baby Toy", detail: "Assorted", price: 250 },
+
   // SNACKS
-  { cat: "snacks", icon: "🍟", name: "Lays Chips (Small)", detail: "Masala flavour, 30g", price: 50 },
-  { cat: "snacks", icon: "🍟", name: "Lays Chips (Large)", detail: "Masala flavour, 90g", price: 120 },
-  { cat: "snacks", icon: "🍪", name: "Oreo Biscuit Pack", detail: "Original, 100g", price: 80 },
-  { cat: "snacks", icon: "🍫", name: "Dairy Milk Chocolate", detail: "Small bar, 25g", price: 100 },
-  { cat: "snacks", icon: "🍪", name: "Sooper Biscuit Family Pack", detail: "Large, 200g", price: 150 },
+  { cat: "snacks", icon: "🍟", image: "", name: "Lays Chips (Small)", detail: "Masala flavour, 30g", price: 50 },
+  { cat: "snacks", icon: "🍪", image: "", name: "Oreo Biscuit Pack", detail: "Original, 100g", price: 80 },
+  { cat: "snacks", icon: "🍫", image: "", name: "Dairy Milk Chocolate", detail: "Small bar, 25g", price: 100 },
+  { cat: "snacks", icon: "🍪", image: "", name: "Sooper Biscuit Family Pack", detail: "Large, 200g", price: 150 },
 
   // JUICES
-  { cat: "juice", icon: "🧃", name: "Nestle Juice (Small)", detail: "Mango/Orange, 200ml", price: 60 },
-  { cat: "juice", icon: "🧃", name: "Shezan Juice Pack", detail: "Mixed fruit, 1 litre", price: 250 },
-  { cat: "juice", icon: "🥤", name: "Coca Cola (Small)", detail: "250ml bottle", price: 60 },
-  { cat: "juice", icon: "🥤", name: "Sting Energy Drink", detail: "250ml", price: 80 },
+  { cat: "juice", icon: "🧃", image: "", name: "Nestle Juice (Small)", detail: "Mango/Orange, 200ml", price: 60 },
+  { cat: "juice", icon: "🧃", image: "", name: "Shezan Juice Pack", detail: "Mixed fruit, 1 litre", price: 250 },
+  { cat: "juice", icon: "🥤", image: "", name: "Coca Cola (Small)", detail: "250ml bottle", price: 60 },
+  { cat: "juice", icon: "🥤", image: "", name: "Sting Energy Drink", detail: "250ml", price: 80 },
 
   // PERFUME
-  { cat: "perfume", icon: "🧴", name: "Body Spray (Small)", detail: "Assorted brands, 100ml", price: 300 },
-  { cat: "perfume", icon: "💐", name: "Perfume Roll-On", detail: "Ladies fragrance, 50ml", price: 250 },
-  { cat: "perfume", icon: "💐", name: "Perfume Spray (Medium)", detail: "Assorted, 150ml", price: 450 },
+  { cat: "perfume", icon: "🧴", image: "", name: "Body Spray (Small)", detail: "Assorted brands, 100ml", price: 300 },
+  { cat: "perfume", icon: "💐", image: "", name: "Perfume Roll-On", detail: "Ladies fragrance, 50ml", price: 250 },
 
-  // SOAP & BODY WASH
-  { cat: "soap", icon: "🧼", name: "Lifebuoy Soap", detail: "Single bar, 100g", price: 60 },
-  { cat: "soap", icon: "🧼", name: "Dettol Soap (Pack of 3)", detail: "100g x 3", price: 180 },
-  { cat: "soap", icon: "🧴", name: "Body Wash (Small)", detail: "Assorted, 200ml", price: 400 },
-
-  // LAUNDRY
-  { cat: "laundry", icon: "🧺", name: "Surf Excel (Small)", detail: "Washing powder, 500g", price: 250 },
-  { cat: "laundry", icon: "🧺", name: "Surf Excel (1kg)", detail: "Washing powder, 1kg", price: 480 },
-  { cat: "laundry", icon: "🧼", name: "Laundry Soap Bar", detail: "Single bar", price: 50 },
-
-  // DISHWASH
-  { cat: "dishwash", icon: "🍽️", name: "Dishwash Liquid (Small)", detail: "Lemon, 250ml", price: 150 },
-  { cat: "dishwash", icon: "🍽️", name: "Dishwash Bar", detail: "Single bar", price: 50 }
+  // SOAP & HOUSEHOLD
+  { cat: "soap", icon: "🧼", image: "", name: "Lifebuoy Soap", detail: "Single bar, 100g", price: 60 },
+  { cat: "soap", icon: "🧼", image: "", name: "Dettol Soap (Pack of 3)", detail: "100g x 3", price: 180 },
+  { cat: "laundry", icon: "🧺", image: "", name: "Surf Excel (Small)", detail: "Washing powder, 500g", price: 250 },
+  { cat: "laundry", icon: "🧼", image: "", name: "Laundry Soap Bar", detail: "Single bar", price: 50 },
+  { cat: "laundry", icon: "🍽️", image: "", name: "Dishwash Liquid", detail: "Lemon, 250ml", price: 150 }
 ];
 
 // ================= RENDER =================
@@ -337,7 +320,7 @@ function renderLadies(filter = "all") {
     const card = document.createElement("div");
     card.className = "card";
     card.innerHTML = `
-      <div class="icon">${p.icon}</div>
+      <div class="img-box">${p.icon}</div>
       <h3>${p.name}</h3>
       <div class="meta"><b>Fabric:</b> ${p.fabric}</div>
       <div class="meta"><b>Sizes:</b> ${p.sizes}</div>
@@ -356,8 +339,14 @@ function renderBazaar(filter = "all") {
   list.forEach(p => {
     const card = document.createElement("div");
     card.className = "card";
+    
+    let imgContent = p.icon;
+    if (p.image && p.image.trim() !== "") {
+      imgContent = `<img src="${p.image}" alt="${p.name}">`;
+    }
+
     card.innerHTML = `
-      <div class="icon">${p.icon}</div>
+      <div class="img-box">${imgContent}</div>
       <h3>${p.name}</h3>
       <div class="meta">${p.detail}</div>
       <div class="price">Rs ${p.price}</div>
@@ -369,4 +358,34 @@ function renderBazaar(filter = "all") {
 
 // ================= ORDER =================
 function orderProduct(name, price) {
-  const msg = `Assalam o Alaikum HerHaven Mall!%0A%0AMujhe yeh order karna hai:%0A%0A*P
+  const msg = `Assalam o Alaikum HerHaven Mall!%0A%0AMujhe yeh order karna hai:%0A%0A*Product:* ${name}%0A*Price:* Rs ${price}%0A%0AMeri size/quantity: (yahan likhein)%0A%0AMera naam: %0AMera address: %0A%0AShukriya!`;
+  window.open(`https://wa.me/923193419642?text=${msg}`, "_blank");
+}
+
+// ================= FILTERS =================
+function filterLadies(cat, btn) {
+  document.querySelectorAll("#ladies .filters button").forEach(b => b.classList.remove("active"));
+  btn.classList.add("active");
+  renderLadies(cat);
+}
+function filterBazaar(cat, btn) {
+  document.querySelectorAll("#bazaar .filters button").forEach(b => b.classList.remove("active"));
+  btn.classList.add("active");
+  renderBazaar(cat);
+}
+
+// ================= NAV =================
+function showPage(id, btn) {
+  document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+  document.querySelectorAll("nav button").forEach(b => b.classList.remove("active"));
+  btn.classList.add("active");
+  window.scrollTo(0, 0);
+}
+
+renderLadies();
+renderBazaar();
+</script>
+
+</body>
+           </html>
