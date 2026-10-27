@@ -66,8 +66,9 @@
   <div class="hero">
     <h2>Khush Amdeed HerHaven Mall Mein</h2>
     <p>Sukkur ki khawateen ke liye khaas — <b>Ladies Corner</b> (privacy ke saath) aur <b>Daily Bazaar</b> (ghar ka saman).<br>Ghar baithe shopping karein, bina kisi sharam ke.</p>
-    <span class="badge">🚚 Sukkur Delivery</span>
+    <span class="badge">🚚 Sukkur & Rohri Delivery</span>
     <span class="badge">💳 Cash on Delivery</span>
+    <span class="badge">🎉 Rs 5000+ par FREE Delivery</span>
     <span class="badge">📦 Discreet Packaging</span>
     <span class="badge">🔒 100% Privacy</span>
   </div>
@@ -86,8 +87,8 @@
       <li><b>Discreet Packaging:</b> Parcel plain bag mein — koi brand name nahi.</li>
       <li><b>Female WhatsApp Support:</b> Sirf khawateen staff.</li>
       <li><b>Size Exchange:</b> 3 din mein exchange (innerwear par return nahi).</li>
-      <li><b>COD + EasyPaisa:</b> Parcel haath mein aaye, tab paise dein.</li>
-      <li><b>Rs 2500+ par FREE delivery</b> (Sukkur city).</li>
+      <li><b>COD + EasyPaisa/NayaPay:</b> Parcel haath mein aaye, tab paise dein.</li>
+      <li><b>Free Delivery:</b> Rs 5000 se upar ki shopping par delivery bilkul free hai.</li>
     </ul>
   </div>
 </div>
@@ -220,10 +221,13 @@
   </div>
 
   <div class="info-box">
-    <h3>💳 Payment</h3>
+    <h3>💳 Payment Details</h3>
     <ul>
       <li><b>COD:</b> Parcel haath mein, tab paise.</li>
-      <li><b>EasyPaisa:</b> Advance par Rs 50 discount.</li>
+      <li><b>Advance Payment (NayaPay):</b> Advance par Rs 50 discount milega.</li>
+      <li><b>Bank:</b> NayaPay</li>
+      <li><b>Account Number:</b> 03193419642</li>
+      <li><b>Account Title:</b> Atique ur Rehman</li>
     </ul>
   </div>
 </div>
@@ -235,21 +239,21 @@
   <div class="info-box">
     <h3>WhatsApp (Female Staff)</h3>
     <p>Order ya sawal ke liye WhatsApp karein:</p>
-    <p style="font-size:18px; font-weight:bold; color:#25D366; margin-top:8px;">📱 03XX-XXXXXXX</p>
-    <p style="font-size:12px; color:#8a5a70; margin-top:6px;">(Placeholder — apna number badlein)</p>
+    <p style="font-size:18px; font-weight:bold; color:#25D366; margin-top:8px;">📱 0319-3419642</p>
   </div>
 
   <div class="info-box">
-    <h3>Delivery</h3>
+    <h3>Delivery Charges</h3>
     <ul>
-      <li>Sukkur City — Rs 100</li>
-      <li>Rs 2500+ par FREE delivery</li>
-      <li>Delivery: 2-3 working days</li>
+      <li><b>Sukkur (Any Area):</b> Rs 150</li>
+      <li><b>Rohri:</b> Rs 250 - Rs 300</li>
+      <li><b>Special Offer:</b> Rs 5000+ par FREE delivery</li>
+      <li>Delivery Time: 2-3 working days</li>
     </ul>
   </div>
 </div>
 
-<a href="https://wa.me/923000000000?text=Assalam%20o%20Alaikum%2C%20HerHaven%20Mall%20se%20order%20karna%20hai" class="whatsapp-btn" target="_blank">💬</a>
+<a href="https://wa.me/923193419642?text=Assalam%20o%20Alaikum%2C%20HerHaven%20Mall%20se%20order%20karna%20hai" class="whatsapp-btn" target="_blank">💬</a>
 
 <div class="footer">
   <p>© 2025 HerHaven Mall — Sukkur</p>
@@ -355,8 +359,7 @@ function renderBazaar(filter = "all") {
 // ================= ORDER =================
 function orderProduct(name, price) {
   const msg = `Assalam o Alaikum HerHaven Mall!%0A%0AMujhe yeh order karna hai:%0A%0A*Product:* ${name}%0A*Price:* Rs ${price}%0A%0AMeri size/quantity: (yahan likhein)%0A%0AMera naam: %0AMera address: %0A%0AShukriya!`;
-  // APNA WHATSAPP NUMBER YAHAN BADLEIN (923XXXXXXXXX — bina + ke)
-  window.open(`https://wa.me/923000000000?text=${msg}`, "_blank");
+  window.open(`https://wa.me/923193419642?text=${msg}`, "_blank");
 }
 
 // ================= FILTERS =================
@@ -375,14 +378,4 @@ function filterBazaar(cat, btn) {
 function showPage(id, btn) {
   document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
   document.getElementById(id).classList.add("active");
-  document.querySelectorAll("nav button").forEach(b => b.classList.remove("active"));
-  btn.classList.add("active");
-  window.scrollTo(0, 0);
-}
-
-renderLadies();
-renderBazaar();
-</script>
-
-</body>
-</html>
+  document.querySelectorAll("nav button").forEach(b => b.classList.remove("acti
