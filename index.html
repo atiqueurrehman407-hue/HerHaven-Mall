@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>HerHaven Mall — Sukkur</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#5a1825">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
@@ -45,7 +47,6 @@
   .page { display: none; }
   .page.active { display: block; }
   
-  /* Cart Page Design */
   .cart-item { background: white; margin: 10px 15px; padding: 15px; border-radius: 10px; display: flex; justify-content: space-between; align-items: center; border: 1px solid #eee; }
   .cart-item h4 { font-size: 14px; color: #333; }
   .cart-item p { font-size: 14px; font-weight: bold; color: #b03060; margin-top: 5px; }
@@ -53,7 +54,6 @@
   .cart-total { margin: 20px 15px; font-size: 18px; font-weight: bold; text-align: right; }
   .checkout-btn { display: block; margin: 0 15px; background: #25D366; color: white; text-align: center; padding: 15px; border-radius: 10px; font-size: 16px; font-weight: bold; text-decoration: none; border: none; width: calc(100% - 30px); cursor: pointer; }
 
-  /* Bottom Nav */
   .bottom-nav { position: fixed; bottom: 0; width: 100%; background: white; display: flex; justify-content: space-around; padding: 10px 0; box-shadow: 0 -2px 10px rgba(0,0,0,0.05); z-index: 100; }
   .nav-item { text-align: center; color: #888; font-size: 11px; font-weight: 600; cursor: pointer; position: relative; }
   .nav-item.active { color: #5a1825; }
@@ -84,7 +84,6 @@
   </div>
 </header>
 
-<!-- HOME PAGE -->
 <div id="homePage" class="page active">
   <div class="hero">
     <h2>Ghar baithe Sukkur ka bazaar</h2>
@@ -111,13 +110,11 @@
   <div class="prod-grid" id="homeProducts"></div>
 </div>
 
-<!-- LADIES PAGE -->
 <div id="ladiesPage" class="page">
   <div class="section-title">Ladies Innerwear</div>
   <div class="prod-grid" id="ladiesProductsGrid"></div>
 </div>
 
-<!-- CART PAGE -->
 <div id="cartPage" class="page">
   <div class="section-title">Your Shopping Cart</div>
   <div id="cartItemsList"></div>
@@ -125,7 +122,6 @@
   <button class="checkout-btn" onclick="checkoutWhatsApp()">Checkout via WhatsApp</button>
 </div>
 
-<!-- BOTTOM NAV -->
 <div class="bottom-nav">
   <div class="nav-item active" onclick="showPage('homePage', this)"><span>🏠</span>Home</div>
   <div class="nav-item" onclick="showPage('ladiesPage', this)"><span>🌸</span>Ladies</div>
@@ -133,56 +129,40 @@
 </div>
 
 <script>
-// ================= PRODUCTS LIST =================
 const allProducts = [
-  // BABY CARE
   { id: 1, cat: "baby", icon: "🍼", image: "", name: "Cerelac (Stage 1/2/3)", detail: "350g", price: 850 },
   { id: 2, cat: "baby", icon: "🥛", image: "", name: "Baby Milk Powder", detail: "NAN / S26", price: 1200 },
   { id: 3, cat: "baby", icon: "🧴", image: "", name: "Baby Cream/Lotion", detail: "Johnsons", price: 300 },
-  
-  // BEAUTY
   { id: 4, cat: "beauty", icon: "🧴", image: "", name: "Beauty Cream", detail: "Whitening 50g", price: 350 },
   { id: 5, cat: "beauty", icon: "🧴", image: "", name: "Face Wash", detail: "100g", price: 450 },
   { id: 6, cat: "beauty", icon: "🪒", image: "", name: "Hair Removal Cream", detail: "Veet", price: 350 },
   { id: 7, cat: "beauty", icon: "🧴", image: "", name: "Shampoo", detail: "180ml", price: 400 },
-
-  // SNACKS
   { id: 8, cat: "snacks", icon: "🍟", image: "", name: "Lays Chips", detail: "Masala 30g", price: 50 },
   { id: 9, cat: "snacks", icon: "🍪", image: "", name: "Oreo Biscuit", detail: "100g", price: 80 },
   { id: 10, cat: "snacks", icon: "🍫", image: "", name: "Dairy Milk", detail: "25g", price: 100 },
-
-  // JUICES
   { id: 11, cat: "juice", icon: "🧃", image: "", name: "Nestle Juice", detail: "200ml", price: 60 },
   { id: 12, cat: "juice", icon: "🥤", image: "", name: "Coca Cola", detail: "250ml", price: 60 },
-
-  // HOUSEHOLD
   { id: 13, cat: "household", icon: "🧼", image: "", name: "Lifebuoy Soap", detail: "100g", price: 60 },
   { id: 14, cat: "household", icon: "🧺", image: "", name: "Surf Excel", detail: "500g", price: 250 },
-  
-  // LADIES INNERWEAR
   { id: 15, cat: "innerwear", icon: "👙", image: "", name: "Cotton Daily Bra", detail: "32B-38B", price: 650 },
   { id: 16, cat: "innerwear", icon: "👗", image: "", name: "Cotton Nighty", detail: "S-XL", price: 1500 }
 ];
 
-// ================= CART LOGIC =================
-let cart = []; // Customer ke cart ka data yahan save hoga
+let cart = [];
 
 function updateCartCount() {
   document.getElementById('cartCount').innerText = cart.length;
 }
 
-// Render Products (Home & Ladies)
 function renderHome(productsToRender) {
   const grid = document.getElementById("homeProducts");
   grid.innerHTML = "";
   productsToRender.forEach(p => {
     if(p.cat === "innerwear") return; 
-
     let imgContent = p.icon;
     if (p.image && p.image.trim() !== "") {
       imgContent = `<img src="${p.image}" alt="${p.name}">`;
     }
-
     grid.innerHTML += `
       <div class="prod-card">
         <div class="img-box">${imgContent}</div>
@@ -211,26 +191,20 @@ function renderLadies() {
   });
 }
 
-// Add to Cart Function
 function addToCart(id) {
   const product = allProducts.find(p => p.id === id);
   cart.push(product);
   updateCartCount();
-  
-  // Agar cart page khula hai toh usay update karo
   if(document.getElementById('cartPage').classList.contains('active')) {
     renderCart();
   }
-  
   alert(product.name + " cart mein add ho gaya hai!");
 }
 
-// Render Cart
 function renderCart() {
   const list = document.getElementById('cartItemsList');
   list.innerHTML = "";
   let total = 0;
-
   if (cart.length === 0) {
     list.innerHTML = "<p style='text-align:center; padding:20px; color:#666;'>Aapka cart khali hai.</p>";
   } else {
@@ -250,39 +224,30 @@ function renderCart() {
   document.getElementById('cartTotal').innerText = "Total: Rs " + total;
 }
 
-// Remove from Cart
 function removeFromCart(index) {
   cart.splice(index, 1);
   updateCartCount();
   renderCart();
 }
 
-// Checkout via WhatsApp (Saare products ek sath message mein)
 function checkoutWhatsApp() {
   if (cart.length === 0) {
     alert("Aapka cart khali hai. Pehle products add karein.");
     return;
   }
-
   let message = "Assalam o Alaikum HerHaven Mall!%0A%0AMujhe yeh products order karne hain:%0A%0A";
   let total = 0;
-
   cart.forEach((item, index) => {
     message += `*${index + 1}. ${item.name}* - Rs ${item.price}%0A`;
     total += item.price;
   });
-
   message += `%0A*Total Bill:* Rs ${total}%0A`;
   message += `%0A*Meri details:*%0A`;
-  message += `Naam: %0A`;
-  message += `Address: %0A`;
-  message += `Phone: %0A`;
+  message += `Naam: %0AAddress: %0APhone: %0A`;
   message += `%0AShukriya!`;
-
   window.open(`https://wa.me/923193419642?text=${message}`, "_blank");
 }
 
-// ================= NAVIGATION & SEARCH =================
 function filterCat(cat) {
   const filtered = cat === 'all' ? allProducts : allProducts.filter(p => p.cat === cat);
   renderHome(filtered);
@@ -299,18 +264,20 @@ function searchProducts() {
 function showPage(pageId, btn) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-  
   document.getElementById(pageId).classList.add('active');
   if(btn) btn.classList.add('active');
-
   if(pageId === 'cartPage') renderCart();
   if(pageId === 'ladiesPage') renderLadies();
   if(pageId === 'homePage') renderHome(allProducts);
-  
   window.scrollTo(0, 0);
 }
 
-// Initial Load
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('service-worker.js');
+  });
+}
+
 renderHome(allProducts);
 updateCartCount();
 </script>
