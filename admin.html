@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Panel - HerHaven Mall</title>
+<style>
+  body { font-family: 'Segoe UI', sans-serif; background: #f8f9fa; padding: 20px; }
+  .container { background: white; padding: 20px; border-radius: 10px; max-width: 500px; margin: auto; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+  h2 { color: #5a1825; text-align: center; margin-bottom: 20px; }
+  label { font-weight: bold; font-size: 14px; color: #333; display: block; margin-top: 10px; }
+  input, select { width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ddd; border-radius: 5px; }
+  button { background: #25D366; color: white; border: none; width: 100%; padding: 12px; border-radius: 8px; font-size: 16px; font-weight: bold; margin-top: 20px; cursor: pointer; }
+  button:hover { background: #1ebe5d; }
+  .list { margin-top: 20px; }
+  .list-item { background: #f1f1f1; padding: 10px; margin-bottom: 5px; border-radius: 5px; display: flex; justify-content: space-between; }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Admin - Naya Product Add Karein</h2>
+  
+  <label>Product ka Naam:</label>
+  <input type="text" id="pName" placeholder="Jaise: Lays Chips">
+
+  <label>Price (Rs):</label>
+  <input type="number" id="pPrice" placeholder="Jaise: 50">
+
+  <label>Category:</label>
+  <select id="pCat">
+    <option value="snacks">Snacks</option>
+    <option value="beauty">Beauty</option>
+    <option value="baby">Baby</option>
+    <option value="juice">Juice</option>
+    <option value="household">Household</option>
+  </select>
+
+  <label>Product ki Picture Select Karein:</label>
+  <input type="file" id="pImage" accept="image/*">
+
+  <button onclick="addProduct()">Upload Product</button>
+
+  <div class="list" id="productList">
+    <!-- Products yahan nazar aayenge -->
+  </div>
+</div>
+
+<script>
+// Phone se products load karna
+let myProducts = JSON.parse(localStorage.getItem('myProducts')) || [];
+
+function addProduct() {
+  const name = document.getElementById('pName').value;
+  const price = document.getElementById('pPrice').value;
+  const cat = document.getElementById('pCat').value;
+  const imageFile = document.getElementById('pImage').files[0];
+
+  if (!name || !price || !imageFile) {
+    alert("Sab details bharein aur picture select karein!");
+    return;
+  }
+
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const newProduct = {
+      id: Date.now(),
+      name: name,
+      price: parseInt(price),
+      cat: cat,
+      image: e.target.result // Picture ka data
+    };
+
+    myProducts.push(newProduct);
+    localStorage.setItem('myProducts', JSON.stringify(myProducts));
+    
+    alert("Product Add Ho Gaya!");
+    document.getElementById('pName').value = "";
+    document.getElementById('pPrice').value = "";
+    document.getElementById('pImage').value = "";
+    renderList();
+  };
+  reader.readAsDataURL(imageFile);
+}
+
+function renderList() {
+  const list = document.getElementById('productList');
+  list.innerHTML = "<h3>Aapke Add Kiye Hue Products:</h3>";
+  myProducts.forEach(p => {
+    list.innerHTML += `<div class="list-item"><span>${p.name} - Rs ${p.price}</span></div>`;
+  });
+}
+
+renderList();
+</script>
+</body>
+</html>
